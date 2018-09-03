@@ -6,16 +6,16 @@
 using namespace std;
 
 // Перечислимый тип для статуса задачи
-//enum class TaskStatus {
-//  NEW,          // новая
-//  IN_PROGRESS,  // в разработке
-//  TESTING,      // на тестировании
-//  DONE          // завершена
-//};
+enum class TaskStatus {
+  NEW,          // новая
+  IN_PROGRESS,  // в разработке
+  TESTING,      // на тестировании
+  DONE          // завершена
+};
 
 // Объявляем тип-синоним для map<TaskStatus, int>,
 // позволяющего хранить количество задач каждого статуса
-//using TasksInfo = map<TaskStatus, int>;
+using TasksInfo = map<TaskStatus, int>;
 
 class TeamTasks {
 public:
@@ -98,46 +98,46 @@ private:
 // Принимаем словарь по значению, чтобы иметь возможность
 // обращаться к отсутствующим ключам с помощью [] и получать 0,
 // не меняя при этом исходный словарь
-//void PrintTasksInfo(TasksInfo tasks_info) {
-//  cout << tasks_info[TaskStatus::NEW] << " new tasks" <<
-//      ", " << tasks_info[TaskStatus::IN_PROGRESS] << " tasks in progress" <<
-//      ", " << tasks_info[TaskStatus::TESTING] << " tasks are being tested" <<
-//      ", " << tasks_info[TaskStatus::DONE] << " tasks are done" << endl;
-//}
-//
-//int main() {
-//  TeamTasks tasks;
-//
-//  for (int i = 0; i < 5; ++i) {
-//    tasks.AddNewTask("Alice");
-//  };
-//
-//  TasksInfo updated_tasks, untouched_tasks;
-//
-//  tie(updated_tasks, untouched_tasks) =
-//		  tasks.PerformPersonTasks("Alice", 5);
-//  PrintTasksInfo(untouched_tasks);
-//
-//  tie(updated_tasks, untouched_tasks) =
-//		  tasks.PerformPersonTasks("Alice", 5);
-//  PrintTasksInfo(untouched_tasks);
-//
-//  tie(updated_tasks, untouched_tasks) =
-//		  tasks.PerformPersonTasks("Alice", 1);
-//  PrintTasksInfo(untouched_tasks);
-//
-//  for (int i = 0; i < 5; ++i) {
-//	tasks.AddNewTask("Alice");
-//  }
-//
-//
-//  tie(updated_tasks, untouched_tasks) =
-//		  tasks.PerformPersonTasks("Alice", 2);
-//  PrintTasksInfo(untouched_tasks);
-//
-//  untouched_tasks = tasks.GetPersonTasksInfo("Alice") ;
-//  PrintTasksInfo(untouched_tasks);
-//
-//  return 0;
-//}
+void PrintTasksInfo(TasksInfo tasks_info) {
+  cout << tasks_info[TaskStatus::NEW] << " new tasks" <<
+      ", " << tasks_info[TaskStatus::IN_PROGRESS] << " tasks in progress" <<
+      ", " << tasks_info[TaskStatus::TESTING] << " tasks are being tested" <<
+      ", " << tasks_info[TaskStatus::DONE] << " tasks are done" << endl;
+}
+
+int main() {
+  TeamTasks tasks;
+
+  for (int i = 0; i < 5; ++i) {
+    tasks.AddNewTask("Alice");
+  };
+
+  TasksInfo updated_tasks, untouched_tasks;
+
+  tie(updated_tasks, untouched_tasks) =
+		  tasks.PerformPersonTasks("Alice", 5);
+  PrintTasksInfo(untouched_tasks);
+
+  tie(updated_tasks, untouched_tasks) =
+		  tasks.PerformPersonTasks("Alice", 5);
+  PrintTasksInfo(untouched_tasks);
+
+  tie(updated_tasks, untouched_tasks) =
+		  tasks.PerformPersonTasks("Alice", 1);
+  PrintTasksInfo(untouched_tasks);
+
+  for (int i = 0; i < 5; ++i) {
+	tasks.AddNewTask("Alice");
+  }
+
+
+  tie(updated_tasks, untouched_tasks) =
+		  tasks.PerformPersonTasks("Alice", 2);
+  PrintTasksInfo(untouched_tasks);
+
+  untouched_tasks = tasks.GetPersonTasksInfo("Alice") ;
+  PrintTasksInfo(untouched_tasks);
+
+  return 0;
+}
 

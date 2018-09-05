@@ -21,6 +21,7 @@ pair<RandomIt, RandomIt> FindStartsWith(
 }
 
 
+
 int main() {
   const vector<string> sorted_strings = {"moscow", "motovilikha", "murmansk"};
 
